@@ -7,6 +7,17 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "android": {
+      "package": "com.harenabs21.newappgenerated"
+    },
+    "ios": {
+      "bundleIdentifier": "com.harenabs21.newappgenerated"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e93786f5-0216-4b61-bce5-904a0bc6a5c8"
+      }
+    }
   }
 }
