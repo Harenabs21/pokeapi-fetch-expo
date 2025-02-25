@@ -1,10 +1,16 @@
-import React from 'react';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
 import usePokemon from './hook/use-pokemon';
 import PokemonCard from './components/PokemonCard';
+import React, { useCallback } from 'react';
 
 const App = () => {
   const { pokemon, loading, fetchMore } = usePokemon();
+
+  
+  const renderPokemonCard = useCallback(
+    ({ item }) => <PokemonCard pokemon={item} />,
+    []
+  );
 
   if (loading && pokemon.length === 0) {
     return (
@@ -14,9 +20,7 @@ const App = () => {
     );
   }
 
-  const renderPokemonCard = ({ item }) => (
-    <PokemonCard pokemon={item} />
-  );
+  
 
   return (
     <FlatList
@@ -28,6 +32,8 @@ const App = () => {
       onEndReachedThreshold={0.5}
       ListFooterComponent={loading && <Text>Loading more...</Text>}
       initialNumToRender={10}
+      maxToRenderPerBatch={10}
+      windowSize={5}
     />
   );
 };
