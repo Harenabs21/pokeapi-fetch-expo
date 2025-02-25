@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 const usePokemon = () => {
   const [pokemon, setPokemon] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -10,15 +11,16 @@ const usePokemon = () => {
       const details = await Promise.all(data.results.map(async (poke) => {
         const detailResponse = await fetch(poke.url);
         const detailData = await detailResponse.json();
-        return { ...poke, image: detailData.sprites.front_default };
+        return { ...poke, image: detailData.sprites.other.showdown.front_default };
       }));
       setPokemon(details);
+      setLoading(false)
     };
 
     fetchData();
   }, []);
 
-  return pokemon;
+  return { pokemon, loading };
 }
 
 export default usePokemon;
