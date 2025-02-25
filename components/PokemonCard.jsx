@@ -1,10 +1,12 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
 export default function PokemonCard({ pokemon }) {
   return (
-    //TODO: fix the image that doesn't render
     <TouchableOpacity style={styles.card}>
+      <View style={styles.imageContainer}>
+        <Image source={{uri: pokemon.image}} style={styles.image}/>
+      </View>
       <Text style={styles.name}>{pokemon.name}</Text>
     </TouchableOpacity>
   )
