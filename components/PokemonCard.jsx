@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
-export default function PokemonCard({ pokemon }) {
+const PokemonCard = React.memo(({ pokemon }) => {
   return (
     <TouchableOpacity style={styles.card}>
       <View style={styles.imageContainer}>
@@ -10,7 +10,9 @@ export default function PokemonCard({ pokemon }) {
       <Text style={styles.name}>{pokemon.name}</Text>
     </TouchableOpacity>
   )
-}
+})
+
+export default PokemonCard
 
 const styles = StyleSheet.create({
   card: {
