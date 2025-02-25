@@ -1,10 +1,18 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View, Text } from 'react-native';
 import usePokemon from './hook/use-pokemon';
 import PokemonCard from './components/PokemonCard';
 
 const App = () => {
-  const pokemon = usePokemon();
+  const { pokemon, loading } = usePokemon();
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   const renderPokemonCard = ({ item }) => (
     <PokemonCard pokemon={item} />
