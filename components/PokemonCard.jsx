@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   imageContainer: {
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     marginRight: 10,
   },
   image: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   name: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: 'bold',
   },
 })
