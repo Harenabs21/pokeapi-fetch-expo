@@ -1,13 +1,16 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../context/theme/ThemeContext'
 
 const PokemonCard = React.memo(({ pokemon }) => {
+  const theme = useContext(ThemeContext)
+
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity style={[styles.card, {backgroundColor: theme.background}, {borderColor: theme.borderColor}]}>
       <View style={styles.imageContainer}>
         <Image source={{uri: pokemon.image}} style={styles.image}/>
       </View>
-      <Text style={styles.name}>{pokemon.name}</Text>
+      <Text style={[styles.name , {color: theme.text}]}>{pokemon.name}</Text>
     </TouchableOpacity>
   )
 })
