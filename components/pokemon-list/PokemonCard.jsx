@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useContext } from 'react'
-import { ThemeContext } from '../context/theme/ThemeContext'
+import { ThemeContext } from '../../context/theme/ThemeContext'
 import tw from 'twrnc'
 
 const PokemonCard = React.memo(({ pokemon }) => {

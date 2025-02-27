@@ -1,8 +1,8 @@
 import { FlatList, View, Text } from 'react-native';
-import usePokemon from '../hook/use-pokemon';
+import usePokemon from '../../hook/use-pokemon';
 import PokemonCard from './PokemonCard';
 import React, { useCallback, useContext } from 'react';
-import { ThemeContext } from '../context/theme/ThemeContext';
+import { ThemeContext } from '../../context/theme/ThemeContext';
 import tw from 'twrnc'
 
 const PokemonList = () => {
