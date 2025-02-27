@@ -7,7 +7,7 @@ const PokemonCard = React.memo(({ pokemon, isGridView }) => {
   const { background, text, borderColor } = useContext(ThemeContext);
 
   return (
-    <TouchableOpacity style={[tw`${ isGridView ? 'flex-col items-center p-2 border rounded-md mb-4 w-40' : 'flex-row items-center p-2 border rounded-md mb-2'}`, {backgroundColor: background}, {borderColor: borderColor}]}>
+    <TouchableOpacity style={[tw`${ isGridView ? 'flex-col items-center p-2 border rounded-md mb-4 w-40 shadow-sm' : 'flex-row items-center p-2 border rounded-md mb-2'}`, {backgroundColor: background}, {borderColor: borderColor}]}>
       <View style={tw`${isGridView ? 'mb-2 w-full h-32' : 'w-18 h-18 mr-2'}`}>
         <Image source={{uri: pokemon.image}} style={[tw`w-full h-full rounded-lg`, {resizeMode: 'contain'}]}/>
       </View>
