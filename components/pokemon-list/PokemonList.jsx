@@ -1,4 +1,4 @@
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, useWindowDimensions } from 'react-native';
 import usePokemon from '../../hook/use-pokemon';
 import PokemonCard from './PokemonCard';
 import SearchInput from '../input/SearchInput';
@@ -6,11 +6,17 @@ import NotFound from '../not-found/NotFound';
 import React, { useCallback, useContext, useState } from 'react';
 import { ThemeContext } from '../../context/theme/ThemeContext';
 import tw from 'twrnc'
+import ListAndGridIcons from '../grid-icons/ListAndGridIcons';
 
 const PokemonList = () => {
   const { pokemon, loading, fetchMore } = usePokemon();
   const [searchText, setSearchText] = useState('')
   const { background, text } = useContext(ThemeContext);
+  const [isGridView, setIsGridView] = useState(false);
+  const { width, height } = useWindowDimensions();
+  const isPortrait = height > width;
+  const numColumns = isGridView ? (isPortrait ? 2 : 4) : 1;
+
 
   const filteredPokemon = pokemon.filter((poke) =>
     poke.name.toLowerCase().includes(searchText.toLowerCase())
@@ -18,8 +24,8 @@ const PokemonList = () => {
 
 
   const renderPokemonCard = useCallback(
-    ({ item }) => <PokemonCard pokemon={item} />,
-    []
+    ({ item }) => <PokemonCard pokemon={item} isGridView={isGridView} />,
+    [isGridView]
   );
 
   const ListFooterComponent = useCallback(() => {
@@ -38,14 +44,20 @@ const PokemonList = () => {
 
   return (
     <View style={[tw`flex-1 p-4 bg-white`, {backgroundColor: background}]}>
-        <SearchInput value={searchText} onChangeText={setSearchText}/>
+        <View style={tw`p-4 flex-row items-center mr-4`}>
+          <SearchInput value={searchText} onChangeText={setSearchText}/>
+          <ListAndGridIcons icon={isGridView ? 'grid' : 'list'} onPress={() => setIsGridView((prev) => !prev)}/>
+        </View>  
         {filteredPokemon.length === 0 && !loading && (
           <NotFound/>
         )}
         <FlatList
         data={filteredPokemon}
         renderItem={renderPokemonCard}
+        key={`${isGridView ? 'grid' : 'list'}-${numColumns}`}
         keyExtractor={(item) => item.id.toString()}
+        numColumns={numColumns}
+        columnWrapperStyle={isGridView && tw`justify-between`}
         contentContainerStyle={[tw`p-2`, { backgroundColor: background }]}
         onEndReached={filteredPokemon.length > 0 ? fetchMore : null}
         onEndReachedThreshold={0.5}
