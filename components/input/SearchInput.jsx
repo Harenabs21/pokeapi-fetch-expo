@@ -8,7 +8,7 @@ const SearchInput = ({value, onChangeText}) => {
   const { background, text, borderColor } = useContext(ThemeContext);
 
   return (
-    <View style={[tw`flex-row items-center border rounded-md p-2 mb-4`, {backgroundColor: background, borderColor: borderColor}]}>
+    <View style={[tw`flex-row items-center border rounded-md p-2 mb-4 mr-4`, {backgroundColor: background, borderColor: borderColor}]}>
       <FontAwesome name="search" size={20} color={text} style={tw`mr-2`} />  
       <TextInput
         style={tw`flex-1`}
