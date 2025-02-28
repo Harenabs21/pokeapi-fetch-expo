@@ -26,14 +26,14 @@
           "backgroundColor": "#004F6E",
           "image": "./assets/icons/splash-icon-light.png",
           "dark": {
-            "image": "./assets/images/splash-icon-dark.png",
+            "image": "./assets/icons/splash-icon-dark.png",
             "backgroundColor": "#004F6E"
           },
           "imageWidth": 200,
           "resizeMode": "contain"
         }
       ]
-    ]
+    ],
     "extra": {
       "eas": {
         "projectId": "e93786f5-0216-4b61-bce5-904a0bc6a5c8"
