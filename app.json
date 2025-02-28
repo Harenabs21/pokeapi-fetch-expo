@@ -9,11 +9,31 @@
       "web"
     ],
     "android": {
-      "package": "com.harenabs21.newappgenerated"
+      "package": "com.harenabs21.newappgenerated",
+      "adaptiveIcon":{
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "monochromeImage": "./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#004F6E"
+      }
     },
     "ios": {
       "bundleIdentifier": "com.harenabs21.newappgenerated"
     },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#004F6E",
+          "image": "./assets/icons/splash-icon-light.png",
+          "dark": {
+            "image": "./assets/images/splash-icon-dark.png",
+            "backgroundColor": "#004F6E"
+          },
+          "imageWidth": 200,
+          "resizeMode": "contain"
+        }
+      ]
+    ]
     "extra": {
       "eas": {
         "projectId": "e93786f5-0216-4b61-bce5-904a0bc6a5c8"
