@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native';
-import React, { useContext } from 'react';
+import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { ThemeContext } from '../../context/theme/ThemeContext';
+import useThemeStore from '../../stores/theme/use-theme.store';
 import tw from 'twrnc';
 
 const NotFound = () => {
-  const { background, text } = useContext(ThemeContext);
+  const { background, text } = useThemeStore((state) => state.theme) ;
 
   return (
     <View style={[tw`flex-1 items-center justify-center`, { backgroundColor: background }]}>

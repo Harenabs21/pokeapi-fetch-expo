@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React, { useContext } from 'react'
-import { ThemeContext } from '../../context/theme/ThemeContext'
+import React from 'react'
 import tw from 'twrnc'
+import useThemeStore from '../../stores/theme/use-theme.store'
 
 const PokemonCard = React.memo(({ pokemon, isGridView }) => {
-  const { background, text, borderColor } = useContext(ThemeContext);
+  const { background, text, borderColor } = useThemeStore((state) => state.theme) ;
 
   return (
     <TouchableOpacity style={[tw`${ isGridView ? 'flex-col items-center p-2 border rounded-md mb-4 w-40 shadow-sm' : 'flex-row items-center p-2 border rounded-md mb-2'}`, {backgroundColor: background}, {borderColor: borderColor}]}>

@@ -1,11 +1,11 @@
 import { View, TextInput } from 'react-native'
-import React, {useContext} from 'react'
+import React from 'react'
 import tw from 'twrnc'
 import { FontAwesome } from '@expo/vector-icons'
-import { ThemeContext } from '../../context/theme/ThemeContext'
+import useThemeStore from '../../stores/theme/use-theme.store'
 const SearchInput = ({value, onChangeText}) => {
 
-  const { background, text, borderColor } = useContext(ThemeContext);
+  const { background, text, borderColor } = useThemeStore((state) => state.theme);
 
   return (
     <View style={[tw`flex-row items-center border rounded-md p-2 mb-4 mr-4`, {backgroundColor: background, borderColor: borderColor}]}>

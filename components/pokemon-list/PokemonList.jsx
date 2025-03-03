@@ -3,16 +3,16 @@ import usePokemon from '../../hook/use-pokemon';
 import PokemonCard from './PokemonCard';
 import SearchInput from '../input/SearchInput';
 import NotFound from '../not-found/NotFound';
-import React, { useCallback, useContext, useState } from 'react';
-import { ThemeContext } from '../../context/theme/ThemeContext';
+import React, { useCallback, useState } from 'react';
 import tw from 'twrnc'
 import ListAndGridIcons from '../grid-icons/ListAndGridIcons';
 import { FlashList } from '@shopify/flash-list';
+import useThemeStore from '../../stores/theme/use-theme.store';
 
 const PokemonList = () => {
   const { pokemon, loading, fetchMore } = usePokemon();
   const [searchText, setSearchText] = useState('')
-  const { background, text } = useContext(ThemeContext);
+  const { background, text } = useThemeStore((state) => state.theme) ;
   const [isGridView, setIsGridView] = useState(false);
   const { width, height } = useWindowDimensions();
   const isPortrait = height > width;
