@@ -7,8 +7,5 @@ const useThemeStore = create((set) => ({
     setTheme: (colorScheme) => set({ theme: colorScheme === "dark" ? darkTheme : lightTheme }),
   }));
 
-Appearance.addChangeListener(({ colorScheme }) => {
-    useThemeStore.setTheme(colorScheme === "dark"? darkTheme : lightTheme);
-});
 
 export default useThemeStore;
