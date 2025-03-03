@@ -7,6 +7,7 @@ import React, { useCallback, useContext, useState } from 'react';
 import { ThemeContext } from '../../context/theme/ThemeContext';
 import tw from 'twrnc'
 import ListAndGridIcons from '../grid-icons/ListAndGridIcons';
+import { FlashList } from '@shopify/flash-list';
 
 const PokemonList = () => {
   const { pokemon, loading, fetchMore } = usePokemon();
@@ -51,20 +52,18 @@ const PokemonList = () => {
         {filteredPokemon.length === 0 && !loading && (
           <NotFound/>
         )}
-        <FlatList
+        <FlashList
         data={filteredPokemon}
         renderItem={renderPokemonCard}
         key={`${isGridView ? 'grid' : 'list'}-${numColumns}`}
         keyExtractor={(item) => item.id.toString()}
         numColumns={numColumns}
         columnWrapperStyle={isGridView && tw`justify-between`}
-        contentContainerStyle={[tw`p-2`, { backgroundColor: background }]}
+        contentContainerStyle={{ backgroundColor: background, padding: 8 }}
         onEndReached={filteredPokemon.length > 0 ? fetchMore : null}
         onEndReachedThreshold={0.5}
         ListFooterComponent={ListFooterComponent}
-        initialNumToRender={10}
-        maxToRenderPerBatch={10}
-        windowSize={5}
+        estimatedItemSize={100} 
       />
     </View>
   );
