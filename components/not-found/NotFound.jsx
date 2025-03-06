@@ -5,7 +5,7 @@ import useThemeStore from '../../stores/theme/use-theme.store';
 import tw from 'twrnc';
 
 const NotFound = () => {
-  const { background, text } = useThemeStore((state) => state.theme) ;
+  const { background, text } = useThemeStore((state) => state.theme);
 
   return (
     <View style={[tw`flex-1 items-center justify-center`, { backgroundColor: background }]}>

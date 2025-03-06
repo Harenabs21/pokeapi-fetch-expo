@@ -3,14 +3,10 @@
     "name": "new-app-generated",
     "slug": "new-app-generated",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "android": {
       "package": "com.harenabs21.newappgenerated",
-      "adaptiveIcon":{
+      "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "monochromeImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#004F6E"
