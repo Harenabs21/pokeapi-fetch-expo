@@ -10,7 +10,13 @@
     "react-native": "0.76.7",
     "react-native-web": "~0.19.6",
     "twrnc": "^4.6.1",
-    "zustand": "^5.0.3"
+    "zustand": "^5.0.3",
+    "expo-router": "~4.0.17",
+    "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "~4.4.0",
+    "expo-linking": "~7.0.5",
+    "expo-constants": "~17.0.7",
+    "expo-status-bar": "~2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
@@ -20,6 +26,7 @@
   },
   "name": "new-app-generated",
   "version": "1.0.0",
+  "main": "expo-router/entry",
   "private": true,
   "scripts": {
     "start": "expo start",
