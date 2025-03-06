@@ -3,7 +3,9 @@
     "name": "new-app-generated",
     "slug": "new-app-generated",
     "version": "1.0.0",
+    "scheme": "myapp",
     "platforms": ["ios", "android", "web"],
+    "newArchEnabled": true,
     "android": {
       "package": "com.harenabs21.newappgenerated",
       "adaptiveIcon": {
