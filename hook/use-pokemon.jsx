@@ -20,7 +20,13 @@ const usePokemon = () => {
         data.results.map(async (poke) => {
           const detailResponse = await fetch(poke.url);
           const detailData = await detailResponse.json();
-          return { ...poke, id: extractIdFromUrl(poke.url), image: detailData.sprites.other.showdown.front_default };
+          const types = detailData.types.map((typeInfo) => typeInfo.type.name);
+          return {
+            ...poke,
+            id: extractIdFromUrl(poke.url),
+            image: detailData.sprites.other.showdown.front_default,
+            types,
+          };
         })
       );
       setPokemon((prev) => {
