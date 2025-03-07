@@ -3,11 +3,16 @@ import React from 'react';
 import tw from 'twrnc';
 import useThemeStore from '../../stores/theme/use-theme.store';
 import getColorFromType from '../../colors/pokemon-color-type';
+import { Link, useRouter } from 'expo-router';
 
 const PokemonCard = React.memo(({ pokemon, isGridView }) => {
   const { text, borderColor } = useThemeStore((state) => state.theme);
   const { id, name, image, types } = pokemon;
   const backgroundFromType = getColorFromType(types[0]);
+  const router = useRouter();
+  const handlePress = () => {
+    router.push(`/${id}`);
+  };
 
   return (
     <TouchableOpacity
@@ -16,6 +21,7 @@ const PokemonCard = React.memo(({ pokemon, isGridView }) => {
         { backgroundColor: backgroundFromType },
         { borderColor: borderColor },
       ]}
+      onPress={handlePress}
     >
       <View style={tw`${isGridView ? 'mb-2 w-full h-32' : 'w-18 h-18 mr-2'}`}>
         <Image source={{ uri: image }} style={[tw`w-full h-full rounded-lg`, { resizeMode: 'contain' }]} />
