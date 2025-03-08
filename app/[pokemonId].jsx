@@ -4,12 +4,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import PokemonDetails from '../components/pokemon-details/PokemonDetails';
 import BackButton from '../components/back-button/BackButton';
+import useThemeStore from '../stores/theme/use-theme.store';
 
 const DetailScreen = () => {
   const { pokemonId } = useLocalSearchParams();
   const [pokemon, setPokemon] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
+  const { background } = useThemeStore((state) => state.theme);
 
   useEffect(() => {
     const fetchPokemonDetail = async () => {
@@ -36,7 +38,7 @@ const DetailScreen = () => {
   }
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16 }}>
+    <ScrollView contentContainerStyle={{ padding: 16, backgroundColor: background, flex: 1 }}>
       <BackButton onPress={navigation.goBack} />
       <PokemonDetails pokemon={pokemon} />
     </ScrollView>
